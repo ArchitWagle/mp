@@ -75,15 +75,14 @@ LABELINP:
 	INT 21H
 	CALL INPUT
 
-	MOV TEMP,CL
-	MOV CL,04H
-	ROL AL,CL
-	MOV CL,TEMP
+	.386
+	ROL AL,04H
 	MOV BL,AL
 
 	MOV AH,01H
 	INT 21H
 	CALL INPUT
+
 	ADD BL,AL
 	
 ;var 2 from user
@@ -96,16 +95,14 @@ LABELINP:
 	INT 21H
 	CALL INPUT
 	
-	MOV TEMP,CL
-	MOV CL,04H
-	ROL AL,CL
-	MOV CL,TEMP
+	.386
+	ROL AL,04H
 	MOV CL,AL
 
 	MOV AH,01H
 	INT 21H
-
 	CALL INPUT
+
 	ADD CL,AL
 	
 ;perform op accroding to choice
@@ -260,7 +257,6 @@ DISP:	;(display result)
 	
 	.386
 	ROR BL,04H
-	MOV CL,TEMP
 	CALL OUTPUT
 	
 	MOV DL,BL
@@ -299,10 +295,3 @@ ENDP
 
 CODE ENDS
 END START
-
-
-
- 
-	
-	
-	
